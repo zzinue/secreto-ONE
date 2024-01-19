@@ -9,6 +9,7 @@
 
 let numeroSecreto = numeroRandom();
 console.log(numeroSecreto);
+let intentos=1; 
 
 function aparecerTexto(header, texto) {
   let general = document.querySelector(header);
@@ -20,13 +21,14 @@ function verificarIntento() {
     document.getElementById("valorUsuarioId").value
   );
  if(numeroDeUsuario===numeroSecreto){
-aparecerTexto("p", "acertaste");
+aparecerTexto("p", `Acertaste el numero en ${intentos} ${(intentos ===1) ?'vez':'veces'}`);
  }else{
   if(numeroDeUsuario>numeroSecreto){
     aparecerTexto("p", "el numero es menor");
   }else{
   aparecerTexto("p", "el numero es mayor");
  }
+ intentos++
 }
   return;
 }
