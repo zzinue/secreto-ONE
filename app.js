@@ -9,19 +9,26 @@
 
 let numeroSecreto = numeroRandom();
 console.log(numeroSecreto);
-console.log(typeof numeroSecreto);
 
 function aparecerTexto(header, texto) {
   let general = document.querySelector(header);
   general.innerHTML = texto;
+  return;
 }
 function verificarIntento() {
   let numeroDeUsuario = parseInt(
     document.getElementById("valorUsuarioId").value
   );
-  console.log(numeroDeUsuario);
-  console.log(typeof numeroDeUsuario);
-  console.log(numeroDeUsuario === numeroSecreto);
+ if(numeroDeUsuario===numeroSecreto){
+aparecerTexto("p", "acertaste");
+ }else{
+  if(numeroDeUsuario>numeroSecreto){
+    aparecerTexto("p", "el numero es menor");
+  }else{
+  aparecerTexto("p", "el numero es mayor");
+ }
+}
+  return;
 }
 function numeroRandom() {
   let numeroAleatorioDigito = Math.floor(Math.random() * 10) + 1;
@@ -29,3 +36,5 @@ function numeroRandom() {
 }
 aparecerTexto("h1", "Juego del numero secreto");
 aparecerTexto("p", "Indica un numero del 1 al 10");
+ 
+
