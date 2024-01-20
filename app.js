@@ -7,9 +7,8 @@
 
 // asignarTextoElemento("p", "Elige el numero del 1 al 10");
 
-let numeroSecreto = numeroRandom();
-console.log(numeroSecreto);
-let intentos = 1;
+let numeroSecreto = 0;
+let intentos = 0;
 
 function aparecerTexto(header, texto) {
   let general = document.querySelector(header);
@@ -52,5 +51,23 @@ function numeroRandom() {
   let numeroAleatorioDigito = Math.floor(Math.random() * 10) + 1;
   return numeroAleatorioDigito;
 }
-aparecerTexto("h1", "Juego del numero secreto");
-aparecerTexto("p", "Indica un numero del 1 al 10");
+
+function condicionesIniciales() {
+  // volver a poner el mensasje inicial
+  aparecerTexto("h1", "Juego del numero secreto");
+  aparecerTexto("p", "Indica un numero del 1 al 10");
+  // numero random set
+  numeroSecreto = numeroRandom();
+  console.log(numeroSecreto);
+
+  // reniiciar el contador
+  intentos = 1;
+}
+function reiniciarJuego() {
+  // limpiar el  input
+  removerNumero();
+  condicionesIniciales();
+  // desabilitar el boton
+  document.querySelector("#reiniciar").setAttribute("disabled", "true");
+}
+condicionesIniciales();
