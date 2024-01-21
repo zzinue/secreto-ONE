@@ -9,6 +9,7 @@
 
 let numeroSecreto = 0;
 let intentos = 0;
+let numerosSorteados=[];
 
 function aparecerTexto(header, texto) {
   let general = document.querySelector(header);
@@ -49,8 +50,17 @@ function removerNumero() {
 
 function numeroRandom() {
   let numeroAleatorioDigito = Math.floor(Math.random() * 10) + 1;
+if(numerosSorteados.includes(numeroAleatorioDigito)){
+  console.log(numeroAleatorioDigito);
+
+  return numeroRandom();
+}else{
+  numerosSorteados.push(numeroAleatorioDigito);
+  console.log(numerosSorteados);
   return numeroAleatorioDigito;
 }
+}
+  
 
 function condicionesIniciales() {
   // volver a poner el mensasje inicial
