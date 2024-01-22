@@ -9,7 +9,8 @@
 
 let numeroSecreto = 0;
 let intentos = 0;
-let numerosSorteados=[];
+let numerosSorteados = [];
+let numeroMaximo = 10;
 
 function aparecerTexto(header, texto) {
   let general = document.querySelector(header);
@@ -49,18 +50,22 @@ function removerNumero() {
 }
 
 function numeroRandom() {
-  let numeroAleatorioDigito = Math.floor(Math.random() * 10) + 1;
-if(numerosSorteados.includes(numeroAleatorioDigito)){
+  let numeroAleatorioDigito = Math.floor(Math.random() * numeroMaximo) + 1;
   console.log(numeroAleatorioDigito);
+  // si ya sorteamos todos los numeros
+  if (numerosSorteados.length == numeroMaximo) {
+    aparecerTexto("p", "Ya se ocuparon todos los numeros");
+  } else {
+    if (numerosSorteados.includes(numeroAleatorioDigito)) {
+      return numeroRandom();
+    } else {
+      numerosSorteados.push(numeroAleatorioDigito);
+      console.log(numerosSorteados);
 
-  return numeroRandom();
-}else{
-  numerosSorteados.push(numeroAleatorioDigito);
-  console.log(numerosSorteados);
-  return numeroAleatorioDigito;
+      return numeroAleatorioDigito;
+    }
+  }
 }
-}
-  
 
 function condicionesIniciales() {
   // volver a poner el mensasje inicial
@@ -68,8 +73,6 @@ function condicionesIniciales() {
   aparecerTexto("p", "Indica un numero del 1 al 10");
   // numero random set
   numeroSecreto = numeroRandom();
-  console.log(numeroSecreto);
-
   // reniiciar el contador
   intentos = 1;
 }
