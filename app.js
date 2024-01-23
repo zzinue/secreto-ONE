@@ -1,86 +1,107 @@
-// function asignarTextoElemento(elemento, texto) {
-//   let elementoHtml = document.querySelector(elemento);
-//   elementoHtml.innerHtml = texto;
+// // function asignarTextoElemento(elemento, texto) {
+// //   let elementoHtml = document.querySelector(elemento);
+// //   elementoHtml.innerHtml = texto;
+// // }
+
+// // asignarTextoElemento("h1", "Juego del numero secreto");
+
+// // asignarTextoElemento("p", "Elige el numero del 1 al 10");
+
+// let numeroSecreto = 0;
+// let intentos = 0;
+// let numerosSorteados = [];
+// let numeroMaximo = 10;
+
+// function aparecerTexto(header, texto) {
+//   let general = document.querySelector(header);
+//   general.innerHTML = texto;
+//   return;
+// }
+// function verificarIntento() {
+//   let numeroDeUsuario = parseInt(
+//     document.getElementById("valorUsuarioId").value
+//   );
+//   if (numeroDeUsuario === numeroSecreto) {
+//     aparecerTexto(
+//       "p",
+//       `Acertaste el numero en ${intentos} ${intentos === 1 ? "vez" : "veces"}`
+//     );
+//     // habilitar boton de nuevo juego
+//     habilitarBoton();
+//   } else {
+//     if (numeroDeUsuario > numeroSecreto) {
+//       aparecerTexto("p", "el numero es menor");
+//     } else {
+//       aparecerTexto("p", "el numero es mayor");
+//     }
+//     intentos++;
+//     // limpiar la caja
+//     removerNumero();
+//   }
+//   return;
 // }
 
-// asignarTextoElemento("h1", "Juego del numero secreto");
+// function habilitarBoton() {
+//   document.getElementById("reiniciar").removeAttribute("disabled");
+// }
 
-// asignarTextoElemento("p", "Elige el numero del 1 al 10");
+// function removerNumero() {
+//   document.querySelector("#valorUsuarioId").value = "";
+// }
 
-let numeroSecreto = 0;
-let intentos = 0;
-let numerosSorteados = [];
-let numeroMaximo = 10;
+// function numeroRandom() {
+//   let numeroAleatorioDigito = Math.floor(Math.random() * numeroMaximo) + 1;
+//   console.log(numeroAleatorioDigito);
+//   // si ya sorteamos todos los numeros
+//   if (numerosSorteados.length == numeroMaximo) {
+//     aparecerTexto("p", "Ya se ocuparon todos los numeros");
+//   } else {
+//     if (numerosSorteados.includes(numeroAleatorioDigito)) {
+//       return numeroRandom();
+//     } else {
+//       numerosSorteados.push(numeroAleatorioDigito);
+//       console.log(numerosSorteados);
 
-function aparecerTexto(header, texto) {
-  let general = document.querySelector(header);
-  general.innerHTML = texto;
-  return;
-}
-function verificarIntento() {
-  let numeroDeUsuario = parseInt(
-    document.getElementById("valorUsuarioId").value
-  );
-  if (numeroDeUsuario === numeroSecreto) {
-    aparecerTexto(
-      "p",
-      `Acertaste el numero en ${intentos} ${intentos === 1 ? "vez" : "veces"}`
-    );
-    // habilitar boton de nuevo juego
-    habilitarBoton();
-  } else {
-    if (numeroDeUsuario > numeroSecreto) {
-      aparecerTexto("p", "el numero es menor");
-    } else {
-      aparecerTexto("p", "el numero es mayor");
-    }
-    intentos++;
-    // limpiar la caja
-    removerNumero();
-  }
-  return;
-}
+//       return numeroAleatorioDigito;
+//     }
+//   }
+// }
 
-function habilitarBoton() {
-  document.getElementById("reiniciar").removeAttribute("disabled");
-}
+// function condicionesIniciales() {
+//   // volver a poner el mensasje inicial
+//   aparecerTexto("h1", "Juego del numero secreto");
+//   aparecerTexto("p", "Indica un numero del 1 al 10");
+//   // numero random set
+//   numeroSecreto = numeroRandom();
+//   // reniiciar el contador
+//   intentos = 1;
+// }
+// function reiniciarJuego() {
+//   // limpiar el  input
+//   removerNumero();
+//   condicionesIniciales();
+//   // desabilitar el boton
+//   document.querySelector("#reiniciar").setAttribute("disabled", "true");
+// }
+// condicionesIniciales();
 
-function removerNumero() {
-  document.querySelector("#valorUsuarioId").value = "";
-}
 
-function numeroRandom() {
-  let numeroAleatorioDigito = Math.floor(Math.random() * numeroMaximo) + 1;
-  console.log(numeroAleatorioDigito);
-  // si ya sorteamos todos los numeros
-  if (numerosSorteados.length == numeroMaximo) {
-    aparecerTexto("p", "Ya se ocuparon todos los numeros");
-  } else {
-    if (numerosSorteados.includes(numeroAleatorioDigito)) {
-      return numeroRandom();
-    } else {
-      numerosSorteados.push(numeroAleatorioDigito);
-      console.log(numerosSorteados);
+// 7  Crea una función que muestre en la consola el número más grande y el número más pequeño en una lista.
 
-      return numeroAleatorioDigito;
+let listaDeNumeros=[1,2,5, 88,8,9,22,33,55];
+let max=0;  
+function masGrande() {
+ for(let i=0;i<listaDeNumeros.length;i++){
+  let lista=listaDeNumeros[i];
+  console.log(lista);
+  if(i==0){
+    max==0;
+  }else{
+    if(lista>max){
+      max=lista
     }
   }
-}
-
-function condicionesIniciales() {
-  // volver a poner el mensasje inicial
-  aparecerTexto("h1", "Juego del numero secreto");
-  aparecerTexto("p", "Indica un numero del 1 al 10");
-  // numero random set
-  numeroSecreto = numeroRandom();
-  // reniiciar el contador
-  intentos = 1;
-}
-function reiniciarJuego() {
-  // limpiar el  input
-  removerNumero();
-  condicionesIniciales();
-  // desabilitar el boton
-  document.querySelector("#reiniciar").setAttribute("disabled", "true");
-}
-condicionesIniciales();
+ }
+ return console.log(max);
+  }
+masGrande()
